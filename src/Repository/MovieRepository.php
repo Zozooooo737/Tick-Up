@@ -16,6 +16,16 @@ class MovieRepository extends ServiceEntityRepository
         parent::__construct($registry, Movie::class);
     }
 
+    public function findFeaturedMovie(): ?Movie
+    {
+        return $this->createQueryBuilder('m')
+            ->orderBy('m.id', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+
     //    /**
     //     * @return Movie[] Returns an array of Movie objects
     //     */

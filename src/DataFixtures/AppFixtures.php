@@ -11,6 +11,8 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
+use Symfony\Component\Yaml\Yaml;
+
 class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
@@ -32,17 +34,20 @@ class AppFixtures extends Fixture
 
         $movies = [];
         // Création de 15 films
-        for ($i = 0; $i < 15; $i++) {
+        $moviesData = Yaml::parseFile(__DIR__ . '/Data/movies.yaml')['movies'];
+
+        foreach ($moviesData as $data) {
             $movie = new Movie();
-            $movie->setTitle($faker->sentence(3))
-                  ->setSynopsis($faker->paragraph())
-                  ->setDuration($faker->numberBetween(80, 180)) // durée en minutes
-                  ->setGenre($faker->word)
-                  ->setDirector($faker->name)
-                  ->setActors($faker->name . ', ' . $faker->name)
-                  ->setReleaseDate($faker->dateTimeBetween('-10 years', 'now'))
-                  ->setPoster($faker->imageUrl(200, 300, 'movies', true))
-                  ->setTrailer($faker->url);
+            $movie->setTitle($data['title'])
+                  ->setSynopsis($data['synopsis'])
+                  ->setDuration($data['duration'])
+                  ->setGenre($data['genre'])
+                  ->setDirector($data['director'])
+                  ->setActors($data['actors'])
+                  ->setReleaseDate(new \DateTime($data['releaseDate']))
+                  ->setPoster($data['poster'])
+                  ->setTrailer($data['trailer']);
+
             $manager->persist($movie);
             $movies[] = $movie;
         }

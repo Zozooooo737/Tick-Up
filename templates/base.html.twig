@@ -2,17 +2,16 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}TickUp{% endblock %}</title>
+        <title>{% block title %}TickUp - Home{% endblock %}</title>
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- <link rel="stylesheet" href="{{ asset('css/base.css') }}">-->
     </head>
 
-    <body class="bg-light">
+    <body class="bg-light d-flex flex-column min-vh-100">
 
+        <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-            <div class="container">
+            <div class="container px-4 px-lg-5">
                 <a class="navbar-brand fw-bold" href="{{ path('app_home') }}">Tick'Up</a>
 
                 <div class="collapse navbar-collapse">
@@ -21,19 +20,83 @@
                             <a class="nav-link" href="{{ path('app_movies') }}">Films</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_booking') }}">Réserver</a>
+                            <a class="nav-link" href="{{ path('app_booking') }}">Réservation</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <main class="container mt-4">
+        <!-- CONTENU -->
+        <main class="container px-4 px-lg-5 my-5 flex-grow-1">
             {% block body %}
-                <h2>Bienvenue sur TickUp</h2>
+
+                <!-- BANNIÈRE -->
+                <section class="mb-5">
+                        <div class="bg-dark bg-opacity-50 p-4 rounded text-white">
+                            <h1 class="display-6 fw-bold">Bienvenue sur TickUp</h1>
+                            <p class="lead mb-0">
+                                Réservez vos séances de cinéma en toute simplicité !
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FILM DU MOMENT -->
+                <section>
+                    <h2 class="mb-4">Film du moment</h2>
+
+                    {% if movie %}
+                        <div class="row align-items-center bg-white rounded shadow-sm p-4">
+
+                            <!-- Poster -->
+                            <div class="col-md-5 mb-3 mb-md-0">
+                                <img 
+                                    src="{{ movie.poster }}"
+                                    class="img-fluid rounded"
+                                    alt="{{ movie.title }}"
+                                >
+                            </div>
+
+                            <!-- Infos -->
+                            <div class="col-md-7">
+                                <h3 class="fw-bold mb-5">{{ movie.title }}</h3>
+
+                                <p class="text-muted">
+                                    Sortie le {{ movie.releaseDate|date('d/m/Y') }}
+                                </p>
+
+                                <p class="lead mb-5">
+                                    {{ movie.synopsis }}
+                                </p>
+
+                                <a 
+                                    href="{{ path('app_movies', { id: movie.id }) }}"
+                                    class="btn btn-primary btn-lg"
+                                >
+                                    Plus d'info
+                                </a>
+                            </div>
+
+                        </div>
+                    {% else %}
+                        <div class="alert alert-warning">
+                            Aucun film disponible pour le moment.
+                        </div>
+                    {% endif %}
+                </section>
+
             {% endblock %}
+
         </main>
 
-     
+        <!-- FOOTER -->
+        <footer class="bg-white text-center text-muted py-3 border-top">
+            <small>
+                © {{ "now"|date("Y") }} TickUp — Projet PHP
+            </small>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

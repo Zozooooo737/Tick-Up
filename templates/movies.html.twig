@@ -1,8 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Films{% endblock %}
+{% block title %}TickUp - Films{% endblock %}
 
 {% block body %}
-    <h2 class="mb-4">Films à l'affiche</h2>
-    <p>Liste des films disponibles.</p>
+
+<h1 class="mb-4">Films à l’affiche</h1>
+
+{% if movies is not empty %}
+
+    <div class="row g-4">
+
+        {% for movie in movies %}
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="card h-100 shadow-sm">
+
+                    <img 
+                        src="{{ movie.poster }}"
+                        class="card-img-top"
+                        alt="{{ movie.title }}"
+                    >
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-center">
+                            {{ movie.title }}
+                        </h5>
+
+                        <a 
+                            href="{{ path('app_movies', { id: movie.id }) }}"
+                            class="btn btn-outline-primary mt-auto"
+                        >
+                            Voir le film
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        {% endfor %}
+
+    </div>
+
+{% else %}
+
+    <div class="alert alert-warning">
+        Aucun film n’est disponible pour le moment.
+    </div>
+
+{% endif %}
+
 {% endblock %}
