@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+use App\Entity\Movie;
+
 final class MyController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
@@ -27,6 +29,14 @@ final class MyController extends AbstractController
 
         return $this->render('movies.html.twig', [
             'movies' => $movies,
+        ]);
+    }
+
+    #[Route('/movies/{id}', name: 'app_show')]
+    public function show(Movie $movie): Response
+    {
+        return $this->render('show.html.twig', [
+            'movie' => $movie,
         ]);
     }
 

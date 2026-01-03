@@ -7,7 +7,7 @@ movies:
       actors: Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot Page
       releaseDate: "2010-07-21"
       poster: https://www.ecranlarge.com/content/uploads/2020/02/inception-affiche-francaise-1164840.png
-      trailer: https://www.youtube.com/watch?v=8hP9D6kZseM
+      trailer: https://www.youtube.com/embed/8hP9D6kZseM?si=nvKcpK_K2fK_5eGV
 
     - title: Interstellar
       synopsis: Un voyage spatial pour sauver l'humanité.
@@ -17,7 +17,7 @@ movies:
       actors: Matthew McConaughey, Anne Hathaway
       releaseDate: "2014-11-05"
       poster: https://fr.web.img6.acsta.net/pictures/14/09/24/12/08/158828.jpg
-      trailer: https://youtube.com/watch?v=zSWdZVtXT7E
+      trailer: https://www.youtube.com/embed/zSWdZVtXT7E?si=YsdeO5CXVDrhGaUO
 
     - title: Hardcore Never Dies
       synopsis: Le jeune Michael de 17 ans rêve d'un avenir en tant que pianiste, mais son parcours musical n'est pas sans embûches. Dans sa quête d'inspiration, il reçoit de l'aide d'un endroit inattendu ; son frère Danny le présente à la scène gabber émergente de Rotterdam.
@@ -27,7 +27,7 @@ movies:
       actors: Joes Brauers, Jim Deddes, Rosa Still
       releaseDate: "2023-11-09"
       poster: https://fr.web.img4.acsta.net/c_310_420/pictures/23/09/27/12/57/4973799.jpg
-      trailer: https://www.youtube.com/watch?v=G9WXc_8gTh4
+      trailer: https://www.youtube.com/embed/G9WXc_8gTh4?si=WoueZwBmE7pfNcxD
 
     - title: Les Goonies
       synopsis: Alors que leurs maisons du quartier des Goon Docks vont être prochainement saisies et qu'ils passent leurs derniers jours ensemble, quatre adolescents, Mickey, Brand, Mouth et Data, découvrent dans un grenier une carte dessinée par le célèbre pirate Willy-le-Borgne.
@@ -37,7 +37,7 @@ movies:
       actors: Sean Astin, Josh Brolin, Corey Feldman, Jeff Cohen
       releaseDate: "1985-12-04"
       poster: https://fr.web.img5.acsta.net/medias/nmedia/18/66/14/37/18957591.jpg
-      trailer: https://www.youtube.com/watch?v=E71-hjH_7Rw
+      trailer: https://www.youtube.com/embed/E71-hjH_7Rw?si=aC4inOzVhxV_QgPH
 
     - title: Gladiator II
       synopsis: Des années après avoir été témoin de la mort du héros vénéré Maximus aux mains de son oncle, Lucius est contraint d'entrer dans le Colisée après que sa maison a été conquise par les empereurs tyranniques qui dirigent désormais Rome d'une main de fer.
@@ -47,7 +47,7 @@ movies:
       actors: Paul Mescal, Pedro Pascal, Denzel Washington
       releaseDate: "2024-11-22"
       poster: https://m.media-amazon.com/images/M/MV5BNmJlZGIzMjEtZWE0NS00NTAxLWIyNGItNjYzYzhjMmI3ZWVmXkEyXkFqcGc@._V1_.jpg
-      trailer: https://www.youtube.com/watch?v=4rgYUipGJNo
+      trailer: https://www.youtube.com/embed/4rgYUipGJNo?si=X-qTUXZ1C5zlhWfu
 
     - title: Moana 2
       synopsis: Moana et Maui sont réunis trois ans plus tard pour un nouveau voyage aux côtés d'un équipage de marins improbables. Après avoir reçu un appel inattendu de ses ancêtres, Moana doit se rendre dans les mers lointaines de l'Océanie et dans des eaux dangereuses, perdues depuis longtemps, pour une aventure comme elle n'en a jamais connu.
@@ -57,7 +57,7 @@ movies:
       actors: Auli'i Cravalho, Dwayne Johnson
       releaseDate: "2024-11-27"
       poster: https://m.media-amazon.com/images/M/MV5BZDUxNThhYTUtYjgxNy00MGQ4LTgzOTEtZjg1YTU5NTcwNThlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg
-      trailer: https://www.youtube.com/watch?v=hDZ7y8RP5HE
+      trailer: https://www.youtube.com/embed/hDZ7y8RP5HE?si=4x-n4cNw8PBWbFBL
 
     - title: The Princess Bride
       synopsis: Au Moyen Âge, dans le pays imaginaire de Florin, la belle Bouton d'Or se languit après le départ de son bien-aimé Westley, parti chercher fortune et qu'elle croit mort. Cinq ans plus tard, elle accepte d'épouser le prince Humperdinck pour qui elle n'éprouve aucun amour.
@@ -67,7 +67,7 @@ movies:
       actors: Cary Elwes, Robin Wright, Mandy Patinkin
       releaseDate: "1987-09-25"
       poster: https://m.media-amazon.com/images/M/MV5BMjFiOTEyNGMtN2E4MC00ZjZlLTk3ZDQtNTU1ZGNiZTA1MzJlXkEyXkFqcGc@._V1_.jpg
-      trailer: https://www.youtube.com/watch?v=WNNUcHRiPS8
+      trailer: https://www.youtube.com/embed/WNNUcHRiPS8?si=kcs5argfM90YPo9M
 
     - title: Superman
       synopsis: Superman entreprend un voyage pour réconcilier son héritage kryptonien avec son éducation humaine en tant que Clark Kent lorsqu'il est pris dans des conflits à domicile ainsi qu'à l'étranger, offrant à Lex Luthor l'occasion opportune de se débarrasser de lui, et ce, une fois pour toutes.
@@ -77,9 +77,9 @@ movies:
       actors: David Corenswet, Rachel Brosnahan, Nicholas Hoult
       releaseDate: "2025-07-11"
       poster: https://fr.web.img2.acsta.net/img/97/ca/97ca64f4e5790703d0358c61aa7d1a11.jpg
-      trailer: https://www.youtube.com/watch?v=Ox8ZLF6cGM0
+      trailer: https://www.youtube.com/embed/Ox8ZLF6cGM0?si=MpRe7EUHqiLHudSR
 
-    - title: "Star Wars, épisode VI : Le Retour du Jedi"
+    - title: "Star Wars VI : Le Retour du Jedi"
       synopsis: "L'Empire galactique est plus puissant que jamais : la construction de la nouvelle arme, l'Etoile de la Mort, menace l'univers tout entier. Han Solo est remis à l'ignoble contrebandier Jabba Le Hutt."
       duration: 134
       genre: "Science-fiction"
@@ -87,7 +87,7 @@ movies:
       actors: "Mark Hamill, Harrison Ford, Carrie Fisher"
       releaseDate: "1983-10-19"
       poster: https://www.dvdfr.com/images/dvd/covers/200x280/dffd1a25451310c08bec4e62d65c93d6/25890/old-star_wars_6_es.0.jpg
-      trailer: "https://www.youtube.com/watch?v=5UfA_aVV1ig"
+      trailer: https://www.youtube.com/embed/PLflUiLxuW0?si=Pi4VXexDARQAcekC
 
     - title: "El Camino : Un film Breaking Bad"
       synopsis: "À la suite de sa fuite spectaculaire, Jesse Pinkman doit accepter son passé pour pouvoir se construire un avenir."
@@ -97,4 +97,4 @@ movies:
       actors: "Aaron Paul, Jesse Plemons, Robert Forster"
       releaseDate: "2019-10-11"
       poster: https://fr.web.img5.acsta.net/pictures/19/09/24/17/24/4667551.jpg
-      trailer: "https://www.youtube.com/watch?v=6K24T--kD4U"
+      trailer: https://www.youtube.com/embed/6K24T--kD4U?si=9gzJP49oDrwTwUTk

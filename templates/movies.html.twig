@@ -8,45 +8,64 @@
 
 {% if movies is not empty %}
 
-    <div class="row g-4">
+<div class="row g-4">
 
-        {% for movie in movies %}
-            <div class="col-6 col-md-4 col-lg-3">
+    {% for movie in movies %}
+        <div class="col-6 col-md-4 col-lg-3">
 
-                <div class="card h-100 shadow-sm">
+            <a 
+                href="{{ path('app_show', { id: movie.id }) }}"
+                class="text-decoration-none text-dark"
+            >
+                <div class="card movie-card h-100 shadow-sm overflow-hidden">
 
-                    <img 
-                        src="{{ movie.poster }}"
-                        class="card-img-top"
-                        alt="{{ movie.title }}"
-                    >
-
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">
-                            {{ movie.title }}
-                        </h5>
-
-                        <a 
-                            href="{{ path('app_movies', { id: movie.id }) }}"
-                            class="btn btn-outline-primary mt-auto"
+                    <div class="movie-poster-wrapper">
+                        <img 
+                            src="{{ movie.poster }}"
+                            alt="{{ movie.title }}"
+                            class="movie-poster"
                         >
-                            Voir le film
-                        </a>
+                    </div>
+
+                    <div class="card-body text-center">
+                        <h6 class="fw-bold mb-0">
+                            {{ movie.title }}
+                        </h6>
                     </div>
 
                 </div>
+            </a>
 
-            </div>
-        {% endfor %}
+        </div>
+    {% endfor %}
 
-    </div>
+</div>
 
 {% else %}
 
-    <div class="alert alert-warning">
-        Aucun film n’est disponible pour le moment.
-    </div>
+<div class="alert alert-warning">
+    Aucun film n’est disponible pour le moment.
+</div>
 
 {% endif %}
+
+<!-- Styles spécifiques -->
+<style>
+.movie-poster-wrapper {
+    height: 360px;
+    overflow: hidden;
+}
+
+.movie-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.movie-card:hover .movie-poster {
+    transform: scale(1.08);
+}
+</style>
 
 {% endblock %}
