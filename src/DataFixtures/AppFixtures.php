@@ -11,7 +11,6 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
-use phpDocumentor\Reflection\Types\Array_;
 use Symfony\Component\Yaml\Yaml;
 
 class AppFixtures extends Fixture
@@ -28,7 +27,6 @@ class AppFixtures extends Fixture
               ->setPassword(password_hash('root', PASSWORD_BCRYPT));
 
         $manager->persist($admin);
-        $manager->flush();
 
 
         $users = [];
@@ -80,8 +78,7 @@ class AppFixtures extends Fixture
             $screening = new Screening();
             $screening->setMovie($faker->randomElement($movies))
                       ->setRoom($faker->randomElement($rooms))
-                      ->setDateTime($faker->dateTimeBetween('now', '+1 month'))
-                      ->setRemainingSeats($faker->numberBetween(20, 150));
+                      ->setDateTime($faker->dateTimeBetween('now', '+1 month'));
             $manager->persist($screening);
             $screenings[] = $screening;
         }
@@ -90,12 +87,12 @@ class AppFixtures extends Fixture
         for ($i = 0; $i < 100; $i++) {
             $booking = new Booking();
             $screening = $faker->randomElement($screenings);
-            $numberOfPeople = $faker->numberBetween(1, 5);
+            $places = $faker->numberBetween(1, 5);
             $pricePerPerson = $faker->randomFloat(2, 5, 20);
 
             $booking->setUser($faker->randomElement($users))
                     ->setScreening($screening)
-                    ->setNumberOfPeople($numberOfPeople)
+                    ->setPlaces($places)
                     ->setPricePerPerson($pricePerPerson)
                     ->setDate($faker->dateTimeBetween('-1 month', 'now'));
 

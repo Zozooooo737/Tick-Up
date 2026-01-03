@@ -18,7 +18,7 @@ class Booking
     private ?\DateTime $date = null;
 
     #[ORM\Column]
-    private ?int $numberOfPeople = null;
+    private ?int $places = null;
 
     #[ORM\Column]
     private ?float $pricePerPerson = null;
@@ -30,7 +30,7 @@ class Booking
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(inversedBy: 'bookings')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Screening $screening = null;
 
@@ -51,14 +51,14 @@ class Booking
         return $this;
     }
 
-    public function getNumberOfPeople(): ?int
+    public function getPlaces(): ?int
     {
-        return $this->numberOfPeople;
+        return $this->places;
     }
 
-    public function setNumberOfPeople(int $numberOfPeople): static
+    public function setPlaces(int $places): static
     {
-        $this->numberOfPeople = $numberOfPeople;
+        $this->places = $places;
         $this->updateTotalPrice();
 
         return $this;
@@ -84,8 +84,8 @@ class Booking
 
     private function updateTotalPrice(): void
     {
-        if ($this->pricePerPerson !== null && $this->numberOfPeople !== null) {
-            $this->totalPrice = $this->pricePerPerson * $this->numberOfPeople;
+        if ($this->pricePerPerson !== null && $this->places !== null) {
+            $this->totalPrice = $this->pricePerPerson * $this->places;
         }
     }
 

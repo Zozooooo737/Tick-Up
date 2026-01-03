@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ScreeningRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ScreeningRepository::class)]
@@ -16,9 +18,6 @@ class Screening
     #[ORM\Column]
     private ?\DateTime $dateTime = null;
 
-    #[ORM\Column]
-    private ?int $remainingSeats = null;
-
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Room $room = null;
@@ -26,6 +25,14 @@ class Screening
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Movie $movie = null;
+
+    #[ORM\OneToMany(mappedBy: 'screening', targetEntity: Booking::class, orphanRemoval: true)]
+    private Collection $bookings;
+
+    public function __construct()
+    {
+        $this->bookings = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -40,19 +47,6 @@ class Screening
     public function setDateTime(\DateTime $dateTime): static
     {
         $this->dateTime = $dateTime;
-
-        return $this;
-    }
-
-    public function getRemainingSeats(): ?int
-    {
-        return $this->remainingSeats;
-    }
-
-    public function setRemainingSeats(int $remainingSeats): static
-    {
-        $this->remainingSeats = $remainingSeats;
-
         return $this;
     }
 
@@ -64,7 +58,6 @@ class Screening
     public function setRoom(?Room $room): static
     {
         $this->room = $room;
-
         return $this;
     }
 
@@ -76,7 +69,54 @@ class Screening
     public function setMovie(?Movie $movie): static
     {
         $this->movie = $movie;
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Booking>
+     */
+    public function getBookings(): Collection
+    {
+        return $this->bookings;
+    }
+
+    public function addBooking(Booking $booking): static
+    {
+        if (!$this->bookings->contains($booking)) {
+            $this->bookings->add($booking);
+            $booking->setScreening($this);
+        }
 
         return $this;
+    }
+
+    public function removeBooking(Booking $booking): static
+    {
+        if ($this->bookings->removeElement($booking)) {
+            if ($booking->getScreening() === $this) {
+                $booking->setScreening(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Nombre de places restantes calculé dynamiquement
+     */
+    public function getRemainingPlaces(): int
+    {
+        $reserved = 0;
+
+        foreach ($this->bookings as $booking) {
+            $reserved += $booking->getPlaces();
+        }
+
+        return max(0, $this->room->getCapacity() - $reserved);
+    }
+
+    public function isFull(): bool
+    {
+        return $this->getRemainingPlaces() <= 0;
     }
 }

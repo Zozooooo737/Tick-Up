@@ -1,8 +1,83 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Réservation{% endblock %}
+{% block title %}Tick'Up - Réservation{% endblock %}
 
 {% block body %}
-    <h2 class="mb-4">Réserver une séance</h2>
-    <p>Choisissez votre film et votre séance.</p>
+
+<h1 class="mb-4">Réserver une séance</h1>
+
+{# --- Sélection du film --- #}
+<form method="get" action="{{ path('app_booking') }}">
+    <div class="mb-3">
+        <label class="form-label">Film</label>
+        <select name="movie" class="form-select" onchange="this.form.submit()">
+            <option value="">-- Choisir un film --</option>
+            {% for m in movies %}
+                <option value="{{ m.id }}" {% if movie and m.id == movie.id %}selected{% endif %}>
+                    {{ m.title }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+</form>
+
+{% if movie %}
+
+<form method="post" class="mt-4" action="{{ path('app_booking_recap') }}">
+
+    <div class="mb-3">
+        <label class="form-label">Séance</label>
+        <select name="screening" class="form-select" id="screening-select" required>
+            {% for screening in screenings %}
+                {% if screening.remainingPlaces > 0 %}
+                    <option 
+                        value="{{ screening.id }}"
+                        data-remaining="{{ screening.remainingPlaces }}"
+                    >
+                        {{ screening.dateTime|date('d/m/Y H:i') }}
+                        — Salle {{ screening.room.name }}
+                        ({{ screening.remainingPlaces }} places restantes)
+                    </option>
+                {% endif %}
+            {% endfor %}
+        </select>
+
+        <p class="text-muted mt-2" id="remaining-text"></p>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Nombre de places</label>
+        <input 
+            type="number"
+            name="places"
+            class="form-control"
+            min="1"
+            required
+        >
+    </div>
+
+    <button class="btn btn-primary">
+        Continuer
+    </button>
+
+</form>
+
+
+
+{# <script>
+const select = document.getElementById('screening-select');
+const text = document.getElementById('remaining-text');
+const placesInput = document.querySelector('input[name="places"]');
+
+function updateRemaining() {
+    const remaining = select.selectedOptions[0].dataset.remaining;
+    text.textContent = remaining + " places restantes pour cette séance";
+    placesInput.max = remaining;
+}
+
+select.addEventListener('change', updateRemaining);
+updateRemaining();
+</script> #}
+
+{% endif %}
+
 {% endblock %}
