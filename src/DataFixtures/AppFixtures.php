@@ -11,6 +11,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
+use phpDocumentor\Reflection\Types\Array_;
 use Symfony\Component\Yaml\Yaml;
 
 class AppFixtures extends Fixture
@@ -18,6 +19,17 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create('fr_FR');
+
+        $admin = new User();
+        $admin->setEmail('root@gmail.com')
+              ->setFirstName('Admin')
+              ->setLastName('Master')
+              ->setRoles(['ROLE_ADMIN'])
+              ->setPassword(password_hash('root', PASSWORD_BCRYPT));
+
+        $manager->persist($admin);
+        $manager->flush();
+
 
         $users = [];
         // Création de 20 utilisateurs
@@ -27,7 +39,7 @@ class AppFixtures extends Fixture
                  ->setLastName($faker->lastName)
                  ->setEmail($faker->unique()->email)
                  ->setPassword(password_hash('password', PASSWORD_BCRYPT))
-                 ->setRole('ROLE_USER');
+                 ->setRoles(['ROLE_USER']);
             $manager->persist($user);
             $users[] = $user;
         }

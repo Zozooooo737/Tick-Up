@@ -9,23 +9,52 @@
 
     <body class="bg-light d-flex flex-column min-vh-100">
 
-        <!-- NAVBAR -->
+       <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand fw-bold" href="{{ path('app_home') }}">Tick'Up</a>
 
                 <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto align-items-center">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_movies') }}">Films</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item me-5">
                             <a class="nav-link" href="{{ path('app_booking') }}">Réservation</a>
                         </li>
+
+                        {# ---- AUTHENTIFICATION ---- #}
+                        {% if app.user %}
+                            <li class="nav-item me-4">
+                                <span class="navbar-text">
+                                    {{ app.user.firstName ?? app.user.userIdentifier }}
+                                </span>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-danger btn-sm"
+                                href="{{ path('app_logout') }}">
+                                    Se déconnecter
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="btn btn-outline-primary btn-sm me-2"
+                                href="{{ path('app_login') }}">
+                                    Se connecter
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-primary btn-sm"
+                                href="{{ path('app_register') }}">
+                                    S'inscrire
+                                </a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
         </nav>
+
 
         <!-- CONTENU -->
         <main class="container px-4 px-lg-5 my-5 flex-grow-1">
