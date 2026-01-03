@@ -1,22 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Récapitulatif de la réservation{% endblock %}
+{% block title %}Récapitulatif{% endblock %}
 
 {% block body %}
+<style>
+    /* On centre tout et on crée la boîte noire */
+    .container-recap {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+    }
+    .box {
+        background: #000;
+        color: #fff;
+        padding: 30px;
+        border-radius: 20px;
+        width: 400px;
+        text-align: center;
+    }
+    .box p { margin: 10px 0; text-align: left; }
+    .btn-success { width: 100%; padding: 10px; margin-top: 20px; cursor: pointer; }
+</style>
 
-<h1>Récapitulatif</h1>
+<div class="container-recap">
+    <div class="box">
+        <h1>Récapitulatif</h1>
+        <p><strong>Utilisateur :</strong> {{ userEmail }}</p>
+        <p><strong>Film :</strong> {{ screening.movie.title }}</p>
+        <p><strong>Date :</strong> {{ screening.dateTime|date('d/m/Y H:i') }}</p>
+        <p><strong>Salle :</strong> {{ screening.room.name }}</p>
+        <p><strong>Places :</strong> {{ places }}</p>
+        <p><strong>Prix :</strong> {{ pricePerPerson }} €</p>
+        <p><strong>Total :</strong> {{ totalPrice }} €</p>
 
-<p><strong>Film :</strong> {{ screening.movie.title }}</p>
-<p><strong>Date et heure :</strong> {{ screening.dateTime|date('d/m/Y H:i') }}</p>
-<p><strong>Salle :</strong> {{ screening.room.name }}</p>
-<p><strong>Nombre de places :</strong> {{ places }}</p>
-<p><strong>Prix par personne :</strong> {{ pricePerPerson }} €</p>
-<p><strong>Total :</strong> {{ totalPrice }} €</p>
-
-<form method="post" action="{{ path('app_booking_confirm') }}">
-    <input type="hidden" name="screening" value="{{ screening.id }}">
-    <input type="hidden" name="places" value="{{ places }}">
-    <button class="btn btn-success">Confirmer et payer</button>
-</form>
-
+        <form method="post" action="{{ path('app_booking_confirm') }}">
+            <input type="hidden" name="screening" value="{{ screening.id }}">
+            <input type="hidden" name="places" value="{{ places }}">
+            <button class="btn btn-success">Confirmer et payer</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

@@ -78,16 +78,21 @@ final class MyController extends AbstractController
             $this->addFlash('error', 'Séance invalide ou nombre de places incorrect.');
             return $this->redirectToRoute('app_booking', ['movie' => $screening?->getMovie()?->getId()]);
         }
+        // Récupère l'utilisateur connecté
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+        $userEmail = $user ? $user->getEmail() : 'Invité';
 
         // Calcul prix total
-        $pricePerPerson = 10; // tu peux récupérer le vrai prix si tu l'as
+        $pricePerPerson = 10; 
         $totalPrice = $places * $pricePerPerson;
-
+        
         return $this->render('recap.html.twig', [
             'screening' => $screening,
             'places' => $places,
             'pricePerPerson' => $pricePerPerson,
             'totalPrice' => $totalPrice,
+            'userEmail' => $userEmail,
         ]);
     }
 
