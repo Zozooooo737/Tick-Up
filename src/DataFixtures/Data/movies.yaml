@@ -1,6 +1,86 @@
 movies:
+    - title: Superman
+      synopsis: Superman entreprend un voyage pour réconcilier son héritage kryptonien avec son éducation humaine en tant que Clark Kent lorsqu'il est pris dans des conflits à domicile ainsi qu'à l'étranger, offrant à Lex Luthor l'occasion opportune de se débarrasser de lui, et ce, une fois pour toutes.
+      duration: 160
+      genre: action, science-fiction
+      director: James Gunn
+      actors: David Corenswet, Rachel Brosnahan, Nicholas Hoult
+      releaseDate: "2025-07-11"
+      poster: https://fr.web.img2.acsta.net/img/97/ca/97ca64f4e5790703d0358c61aa7d1a11.jpg
+      trailer: https://www.youtube.com/embed/Ox8ZLF6cGM0?si=MpRe7EUHqiLHudSR
+
+    - title: "Avatar: The Way of Water"
+      synopsis: "Jake Sully et Neytiri ont formé une famille et font tout pour rester ensemble. Cependant, ils doivent quitter leur foyer et explorer les régions de Pandora lorsqu'une ancienne menace refait surface."
+      duration: 192
+      genre: "Science-fiction, adventure, action"
+      director: "James Cameron"
+      actors: "Sam Worthington, Zoe Saldana, Sigourney Weaver"
+      releaseDate: "2022-12-14"
+      poster: https://m.media-amazon.com/images/I/71s3cEqEZTL._AC_UF894,1000_QL80_.jpg
+      trailer: https://www.youtube.com/embed/VKi10HFRhgM?si=SriX3adl482Kl-4h
+
+    - title: Interstellar
+      synopsis: Un voyage spatial pour sauver l'humanité.
+      duration: 169
+      genre: Science-fiction
+      director: Christopher Nolan
+      actors: Matthew McConaughey, Anne Hathaway
+      releaseDate: "2014-11-05"
+      poster: https://fr.web.img6.acsta.net/pictures/14/09/24/12/08/158828.jpg
+      trailer: https://www.youtube.com/embed/zSWdZVtXT7E?si=YsdeO5CXVDrhGaUO
+
+    - title: "Dune"
+      synopsis: "Paul Atreides, un brillant et talentueux jeune homme né dans une grande destinée au-delà de sa compréhension, doit se rendre sur la planète la plus dangereuse de l'univers pour assurer l'avenir de sa famille et de son peuple."
+      duration: 155
+      genre: "Science-fiction, adventure, drama"
+      director: "Denis Villeneuve"
+      actors: "Timothée Chalamet, Rebecca Ferguson, Oscar Isaac"
+      releaseDate: "2021-10-22"
+      poster: https://medias.boutique.lab.arte.tv/prod/69124_vod_thumb_374512.jpg
+      trailer: https://www.youtube.com/embed/gHt8tCHbB2M?si=VoMJ0UBN5h6m5tJN
+
+    - title: "The Batman"
+      synopsis: "Dans sa deuxième année de lutte contre le crime, Batman découvre la corruption à Gotham City tout en poursuivant le Sphinx, un tueur en série ciblant l'élite de Gotham."
+      duration: 176
+      genre: "Action, crime, drama"
+      director: "Matt Reeves"
+      actors: "Robert Pattinson, Zoë Kravitz, Colin Farrell"
+      releaseDate: "2022-03-04"
+      poster: https://m.media-amazon.com/images/M/MV5BMmU5NGJlMzAtMGNmOC00YjJjLTgyMzUtNjAyYmE4Njg5YWMyXkEyXkFqcGc@._V1_.jpg
+      trailer: https://www.youtube.com/embed/hWRSJlp50rQ?si=3yvkxyEf26RwSufU
+
+    - title: "Black Panther: Wakanda Forever"
+      synopsis: "Les dirigeants de Wakanda luttent pour protéger leur nation des puissances mondiales qui cherchent à exploiter les ressources vibranium après la mort du roi T'Challa."
+      duration: 161
+      genre: "Action, adventure, drama"
+      director: "Ryan Coogler"
+      actors: "Letitia Wright, Lupita Nyong'o, Danai Gurira"
+      releaseDate: "2022-11-09"
+      poster: https://lumiere-a.akamaihd.net/v1/images/p_blackpanther_19754_4ac13f07.jpeg?region=0,0,540,810
+      trailer: https://www.youtube.com/embed/8RQpN5kQslw?si=3AKULSjv90kPTFC0
+
+    - title: "Top Gun: Maverick"
+      synopsis: "Après plus de trente ans de service en tant que l'un des meilleurs pilotes de l'US Navy, Pete 'Maverick' Mitchell est confronté à son passé lorsqu'il forme un groupe de diplômés de Top Gun pour une mission spéciale."
+      duration: 131
+      genre: "Action, drama"
+      director: "Joseph Kosinski"
+      actors: "Tom Cruise, Jennifer Connelly, Miles Teller"
+      releaseDate: "2022-05-27"
+      poster: https://m.media-amazon.com/images/M/MV5BMDBkZDNjMWEtOTdmMi00NmExLTg5MmMtNTFlYTJlNWY5YTdmXkEyXkFqcGc@._V1_.jpg
+      trailer: https://www.youtube.com/embed/JYaFU81-t6c?si=z6u8zbfC_m7ZqbA6
+
+    - title: Gladiator II
+      synopsis: Des années après avoir été témoin de la mort du héros vénéré Maximus aux mains de son oncle, Lucius est contraint d'entrer dans le Colisée après que sa maison a été conquise par les empereurs tyranniques qui dirigent désormais Rome d'une main de fer.
+      duration: 148
+      genre: action, aventure, drame
+      director: Ridley Scott
+      actors: Paul Mescal, Pedro Pascal, Denzel Washington
+      releaseDate: "2024-11-22"
+      poster: https://m.media-amazon.com/images/M/MV5BNmJlZGIzMjEtZWE0NS00NTAxLWIyNGItNjYzYzhjMmI3ZWVmXkEyXkFqcGc@._V1_.jpg
+      trailer: https://www.youtube.com/embed/4rgYUipGJNo?si=X-qTUXZ1C5zlhWfu
+
     - title: Inception
-      synopsis: A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO, but his tragic past may doom the project and his team to disaster.
+      synopsis: Un voleur qui dérobe des secrets d'entreprise grâce à la technologie de partage de rêves se voit offrir la chance de racheter son passé en implantant une idée dans l'esprit d'un PDG.
       duration: 148
       genre: Science-fiction
       director: Christopher Nolan
@@ -17,17 +97,7 @@ movies:
       actors: Nobuyuki Hiyama, Akiko Kōmoto
       releaseDate: "1991-11-21"
       poster: https://m.media-amazon.com/images/M/MV5BZWNlZGIzNmYtNDYwNi00MWFkLTg2ODctZjNlYzI3ODcxMDEwXkEyXkFqcGc@._V1_.jpg
-      trailer: https://www.youtube.com/embed/Dq_gUziNZUk?si=P4Wde7bjAjnNGVQn
-
-    - title: Interstellar
-      synopsis: Un voyage spatial pour sauver l'humanité.
-      duration: 169
-      genre: Science-fiction
-      director: Christopher Nolan
-      actors: Matthew McConaughey, Anne Hathaway
-      releaseDate: "2014-11-05"
-      poster: https://fr.web.img6.acsta.net/pictures/14/09/24/12/08/158828.jpg
-      trailer: https://www.youtube.com/embed/zSWdZVtXT7E?si=YsdeO5CXVDrhGaUO
+      trailer: https://www.youtube.com/embed/TW77EKjs5XY?si=GGSOLwtIHwmE9Oqr&amp;start=738
 
     - title: Hardcore Never Dies
       synopsis: Le jeune Michael de 17 ans rêve d'un avenir en tant que pianiste, mais son parcours musical n'est pas sans embûches. Dans sa quête d'inspiration, il reçoit de l'aide d'un endroit inattendu ; son frère Danny le présente à la scène gabber émergente de Rotterdam.
@@ -49,16 +119,6 @@ movies:
       poster: https://fr.web.img5.acsta.net/medias/nmedia/18/66/14/37/18957591.jpg
       trailer: https://www.youtube.com/embed/E71-hjH_7Rw?si=aC4inOzVhxV_QgPH
 
-    - title: Gladiator II
-      synopsis: Des années après avoir été témoin de la mort du héros vénéré Maximus aux mains de son oncle, Lucius est contraint d'entrer dans le Colisée après que sa maison a été conquise par les empereurs tyranniques qui dirigent désormais Rome d'une main de fer.
-      duration: 148
-      genre: action, aventure, drame
-      director: Ridley Scott
-      actors: Paul Mescal, Pedro Pascal, Denzel Washington
-      releaseDate: "2024-11-22"
-      poster: https://m.media-amazon.com/images/M/MV5BNmJlZGIzMjEtZWE0NS00NTAxLWIyNGItNjYzYzhjMmI3ZWVmXkEyXkFqcGc@._V1_.jpg
-      trailer: https://www.youtube.com/embed/4rgYUipGJNo?si=X-qTUXZ1C5zlhWfu
-
     - title: Moana 2
       synopsis: Moana et Maui sont réunis trois ans plus tard pour un nouveau voyage aux côtés d'un équipage de marins improbables. Après avoir reçu un appel inattendu de ses ancêtres, Moana doit se rendre dans les mers lointaines de l'Océanie et dans des eaux dangereuses, perdues depuis longtemps, pour une aventure comme elle n'en a jamais connu.
       duration: 100
@@ -78,16 +138,6 @@ movies:
       releaseDate: "1987-09-25"
       poster: https://m.media-amazon.com/images/M/MV5BMjFiOTEyNGMtN2E4MC00ZjZlLTk3ZDQtNTU1ZGNiZTA1MzJlXkEyXkFqcGc@._V1_.jpg
       trailer: https://www.youtube.com/embed/WNNUcHRiPS8?si=kcs5argfM90YPo9M
-
-    - title: Superman
-      synopsis: Superman entreprend un voyage pour réconcilier son héritage kryptonien avec son éducation humaine en tant que Clark Kent lorsqu'il est pris dans des conflits à domicile ainsi qu'à l'étranger, offrant à Lex Luthor l'occasion opportune de se débarrasser de lui, et ce, une fois pour toutes.
-      duration: 160
-      genre: action, science-fiction
-      director: James Gunn
-      actors: David Corenswet, Rachel Brosnahan, Nicholas Hoult
-      releaseDate: "2025-07-11"
-      poster: https://fr.web.img2.acsta.net/img/97/ca/97ca64f4e5790703d0358c61aa7d1a11.jpg
-      trailer: https://www.youtube.com/embed/Ox8ZLF6cGM0?si=MpRe7EUHqiLHudSR
 
     - title: "Star Wars VI : Le Retour du Jedi"
       synopsis: "L'Empire galactique est plus puissant que jamais : la construction de la nouvelle arme, l'Etoile de la Mort, menace l'univers tout entier. Han Solo est remis à l'ignoble contrebandier Jabba Le Hutt."
