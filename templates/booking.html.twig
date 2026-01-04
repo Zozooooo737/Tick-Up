@@ -27,15 +27,14 @@
             <div class="mb-3">
                 <label class="form-label">Séance</label>
                 <select name="screening" class="form-select" id="screening-select" required>
-                    {% for screening in screenings %}
-                        {% if screening.remainingPlaces > 0 %}
+                    {% for s in screenings %}
+                        {% if s.getRemainingPlaces() > 0 %}
                             <option 
-                                value="{{ screening.id }}"
-                                data-remaining="{{ screening.remainingPlaces }}"
+                                value="{{ s.id }}"
+                                data-remaining="{{ s.getRemainingPlaces() }}"
+                                {% if screening and s.id == screening.id %}selected{% endif %}
                             >
-                                {{ screening.dateTime|date('d/m/Y H:i') }}
-                                — Salle {{ screening.room.name }}
-                                ({{ screening.remainingPlaces }} places restantes)
+                                {{ s.dateTime|date('d/m/Y H:i') }} — Salle {{ s.room.name }}
                             </option>
                         {% endif %}
                     {% endfor %}

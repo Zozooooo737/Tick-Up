@@ -61,6 +61,10 @@ final class MyController extends AbstractController
         $movieId = $request->query->get('movie');
         $movie = $movieId ? $movieRepository->find($movieId) : null;
 
+        $screeningId = $request->query->get('screening');
+        $screening = $screeningId ? $screeningRepository->find($screeningId) : null;
+
+
         // Séances liées au film
         $screenings = $movie
             ? $screeningRepository->findBy(['movie' => $movie])
@@ -70,6 +74,7 @@ final class MyController extends AbstractController
             'movie' => $movie,
             'movies' => $movieRepository->findAll(),
             'screenings' => $screenings,
+            'screening' => $screening, // <-- nouveau
         ]);
     }
     
@@ -94,11 +99,8 @@ final class MyController extends AbstractController
         }
 
         // Récupère l'utilisateur connecté
-        /** @var \App\Entity\User $user */
-        $user = $this->getUser();
-        $userEmail = $user ? $user->getEmail() : 'Invité';
+        $userEmail = $this->getUser()?->getUserIdentifier() ?? 'Invité';
 
-        // Rendu du récapitulatif
         return $this->render('recap.html.twig', [
             'screening' => $screening,
             'places' => $places,

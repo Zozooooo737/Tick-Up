@@ -67,42 +67,47 @@
 
     <ul class="list-group">
         {% for screening in screenings %}
-            {% if screening.getRemainingPlaces() > 0 %}
-                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <!-- Infos séance -->
+                <div>
+                    <span class="fw-semibold">
+                        {{ screening.dateTime|date('d/m/Y') }}
+                    </span>
+                    <span class="text-muted ms-2">
+                        {{ screening.dateTime|date('H:i') }}
+                    </span>
+                    <span class="text-muted ms-2 me-4">
+                        — Salle {{ screening.room.name }}
+                    </span>
 
-                    <!-- Infos séance -->
-                    <div>
-                        <span class="fw-semibold">
-                            {{ screening.dateTime|date('d/m/Y') }}
-                        </span>
-                        <span class="text-muted ms-2">
-                            {{ screening.dateTime|date('H:i') }}
-                        </span>
-                        <span class="text-muted ms-2 me-4">
-                            — Salle {{ screening.room.name }}
-                        </span>
+                    <span class="ms-3 fw-semibold text-primary">
+                        {{ screening.price }} € / place
+                    </span>
+                </div>
 
-                        <span class="ms-3 fw-semibold text-primary">
-                            {{ screening.price }} € / place
+                <!-- Actions -->
+                <div class="d-flex align-items-center mt-2 mt-sm-0">
+                    {% if screening.isFull() %}
+                        <span class="badge bg-danger rounded-pill me-3">
+                            Complet
                         </span>
-                    </div>
-
-                    <!-- Actions -->
-                    <div class="d-flex align-items-center mt-2 mt-sm-0">
+                        <button class="btn btn-sm btn-secondary" disabled>
+                            Réserver
+                        </button>
+                    {% else %}
                         <span class="badge bg-secondary rounded-pill me-3">
                             {{ screening.getRemainingPlaces() }} places restantes
                         </span>
-
                         <a
                             href="{{ path('app_booking', { movie: movie.id, screening: screening.id }) }}"
                             class="btn btn-sm btn-primary"
                         >
                             Réserver
                         </a>
-                    </div>
+                    {% endif %}
+                </div>
+            </li>
 
-                </li>
-            {% endif %}
         {% else %}
             <li class="list-group-item text-muted">
                 Aucune séance disponible pour le moment.

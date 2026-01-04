@@ -9,6 +9,16 @@ movies:
       poster: https://www.ecranlarge.com/content/uploads/2020/02/inception-affiche-francaise-1164840.png
       trailer: https://www.youtube.com/embed/8hP9D6kZseM?si=nvKcpK_K2fK_5eGV
 
+    - title: "The Legend of Zelda : A Link to the Past"
+      synopsis: Un jeune garçon nommé Link est transporté dans le royaume d'Hyrule, où il doit sauver la princesse Zelda et vaincre le maléfique sorcier Agahnim pour restaurer la paix dans le royaume.
+      duration: 120
+      genre: aventure, fantasy
+      director: Takashi Tezuka
+      actors: Nobuyuki Hiyama, Akiko Kōmoto
+      releaseDate: "1991-11-21"
+      poster: https://m.media-amazon.com/images/M/MV5BZWNlZGIzNmYtNDYwNi00MWFkLTg2ODctZjNlYzI3ODcxMDEwXkEyXkFqcGc@._V1_.jpg
+      trailer: https://www.youtube.com/embed/Dq_gUziNZUk?si=P4Wde7bjAjnNGVQn
+
     - title: Interstellar
       synopsis: Un voyage spatial pour sauver l'humanité.
       duration: 169

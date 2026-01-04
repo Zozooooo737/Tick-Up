@@ -77,17 +77,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * Identifiant visuel de l'utilisateur (email)
-     */
     public function getUserIdentifier(): string
     {
         return (string) $this->email;
     }
 
-    /**
-     * @see UserInterface
-     */
     public function getRoles(): array
     {
         $roles = $this->roles;
@@ -95,18 +89,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return array_unique($roles);
     }
 
-    /**
-     * @param list<string> $roles
-     */
     public function setRoles(array $roles): static
     {
         $this->roles = $roles;
         return $this;
     }
 
-    /**
-     * @see PasswordAuthenticatedUserInterface
-     */
     public function getPassword(): ?string
     {
         return $this->password;
@@ -118,8 +106,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function eraseCredentials(): void
-    {
-        // rien à faire (mot de passe déjà hashé)
-    }
+    public function eraseCredentials(): void {}
 }
