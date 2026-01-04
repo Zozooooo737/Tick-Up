@@ -1,0 +1,60 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content %}
+<div class="container-fluid">
+
+    <h1 class="mb-4">Statistiques</h1>
+
+    <div class="row g-4">
+        <div class="col-xl-4 col-md-6">
+            <div class="card shadow-sm p-3 h-100">
+                <h6 class="text-muted">Places réservées</h6>
+                <h3>{{ totalPlaces }}</h3>
+            </div>
+        </div>
+
+        <div class="col-xl-4 col-md-6">
+            <div class="card shadow-sm p-3 h-100">
+                <h6 class="text-muted">Chiffre d’affaires</h6>
+                <h3>{{ totalRevenue }} €</h3>
+            </div>
+        </div>
+
+        <div class="col-xl-4 col-md-6">
+            <div class="card shadow-sm p-3 h-100">
+                <h6 class="text-muted">Réservations</h6>
+                <h3>{{ totalBookings }}</h3>
+            </div>
+        </div>
+
+        <div class="col-xl-4 col-md-6">
+            <div class="card shadow-sm p-3 h-100">
+                <h6 class="text-muted">Séances</h6>
+                <h3>{{ totalScreenings }}</h3>
+            </div>
+        </div>
+
+        <div class="col-xl-4 col-md-6">
+            <div class="card shadow-sm p-3 h-100">
+                <h6 class="text-muted">Utilisateurs</h6>
+                <h3>{{ totalUsers }}</h3>
+            </div>
+        </div>
+
+        <div class="col-xl-4 col-md-6">
+            <div class="card shadow-sm p-3 h-100">
+                <h6 class="text-muted">Séance la plus remplie</h6>
+                {% if bestScreening %}
+                    <strong>{{ bestScreening.movie.title }}</strong>
+                    <div class="text-muted">
+                        {{ bestScreening.dateTime|date('d/m/Y H:i') }}
+                    </div>
+                {% else %}
+                    <span class="text-muted">Aucune donnée</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

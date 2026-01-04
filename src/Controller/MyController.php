@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Booking;
 use App\Entity\Movie;
 use App\Entity\Screening;
+use App\Repository\UserRepository;
+use App\Repository\BookingRepository;
 use App\Repository\MovieRepository;
 use App\Repository\ScreeningRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -147,5 +149,22 @@ final class MyController extends AbstractController
     {
         return $this->render('success.html.twig');
     
+    }
+
+
+    #[Route('admin/stats', name: 'app_stats')]
+    public function stats(
+        BookingRepository $bookingRepo,
+        ScreeningRepository $screeningRepo,
+        UserRepository $userRepo
+    ): Response {
+        return $this->render('stats.html.twig', [
+            'totalPlaces' => $bookingRepo->getTotalReservedPlaces(),
+            'totalRevenue' => $bookingRepo->getTotalRevenue(),
+            'totalBookings' => $bookingRepo->count([]),
+            'totalScreenings' => $screeningRepo->count([]),
+            'totalUsers' => $userRepo->count([]),
+            'bestScreening' => $screeningRepo->getMostBookedScreening(),
+        ]);
     }
 }

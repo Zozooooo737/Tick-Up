@@ -15,4 +15,21 @@ class BookingRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Booking::class);
     }
+
+    public function getTotalReservedPlaces(): int
+    {
+        return (int) $this->createQueryBuilder('b')
+            ->select('SUM(b.places)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function getTotalRevenue(): float
+    {
+        return (float) $this->createQueryBuilder('b')
+            ->select('SUM(b.places * b.pricePerPerson)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
 }

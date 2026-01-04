@@ -30,4 +30,16 @@ class ScreeningRepository extends ServiceEntityRepository
     {
         return $screening !== null && $places > 0 && $places <= $screening->getRemainingPlaces();
     }
+
+    public function getMostBookedScreening(): ?Screening
+    {
+        return $this->createQueryBuilder('s')
+            ->join('s.bookings', 'b')
+            ->groupBy('s.id')
+            ->orderBy('SUM(b.places)', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
 }
