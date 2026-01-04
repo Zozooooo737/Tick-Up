@@ -18,6 +18,9 @@ class Screening
     #[ORM\Column]
     private ?\DateTime $dateTime = null;
 
+    #[ORM\Column(type: 'float')]
+    private ?float $price = null; 
+
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Room $room = null;
@@ -48,6 +51,22 @@ class Screening
     {
         $this->dateTime = $dateTime;
         return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(float $price): static
+    {
+        $this->price = $price;
+        return $this;
+    }
+
+    public function getTotalPrice(int $places): float
+    {
+        return $this->price * $places;
     }
 
     public function getRoom(): ?Room

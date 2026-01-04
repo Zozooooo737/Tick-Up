@@ -10,7 +10,6 @@ use App\Entity\Booking;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
-
 use Symfony\Component\Yaml\Yaml;
 
 class AppFixtures extends Fixture
@@ -19,6 +18,9 @@ class AppFixtures extends Fixture
     {
         $faker = Factory::create('fr_FR');
 
+        /* =======================
+         * ADMIN
+         * ======================= */
         $admin = new User();
         $admin->setEmail('root@gmail.com')
               ->setFirstName('Admin')
@@ -28,9 +30,10 @@ class AppFixtures extends Fixture
 
         $manager->persist($admin);
 
-
+        /* =======================
+         * USERS
+         * ======================= */
         $users = [];
-        // Création de 20 utilisateurs
         for ($i = 0; $i < 20; $i++) {
             $user = new User();
             $user->setFirstName($faker->firstName)
@@ -38,12 +41,15 @@ class AppFixtures extends Fixture
                  ->setEmail($faker->unique()->email)
                  ->setPassword(password_hash('password', PASSWORD_BCRYPT))
                  ->setRoles(['ROLE_USER']);
+
             $manager->persist($user);
             $users[] = $user;
         }
 
+        /* =======================
+         * MOVIES
+         * ======================= */
         $movies = [];
-        // Création de 15 films
         $moviesData = Yaml::parseFile(__DIR__ . '/Data/movies.yaml')['movies'];
 
         foreach ($moviesData as $data) {
@@ -62,38 +68,60 @@ class AppFixtures extends Fixture
             $movies[] = $movie;
         }
 
+        /* =======================
+         * ROOMS
+         * ======================= */
         $rooms = [];
-        // Création de 5 salles
         for ($i = 0; $i < 5; $i++) {
             $room = new Room();
             $room->setName('Salle ' . ($i + 1))
                  ->setCapacity($faker->numberBetween(50, 200));
+
             $manager->persist($room);
             $rooms[] = $room;
         }
 
+        /* =======================
+         * SCREENINGS 
+         * ======================= */
         $screenings = [];
-        // Création de 50 séances aléatoires
         for ($i = 0; $i < 50; $i++) {
+
+            $dateTime = $faker->dateTimeBetween('now', '+1 month');
+
+            // LOGIQUE DE PRIX
+            $price = match (true) {
+                $dateTime->format('H') < 18 => $faker->randomFloat(2, 8, 10),
+                default => $faker->randomFloat(2, 11, 14),
+            };
+
+            // Week-end = plus cher
+            if (in_array($dateTime->format('N'), [6, 7])) {
+                $price += 2;
+            }
+
             $screening = new Screening();
             $screening->setMovie($faker->randomElement($movies))
                       ->setRoom($faker->randomElement($rooms))
-                      ->setDateTime($faker->dateTimeBetween('now', '+1 month'));
+                      ->setDateTime($dateTime)
+                      ->setPrice($price);
+
             $manager->persist($screening);
             $screenings[] = $screening;
         }
 
-        // Création de 100 réservations aléatoires
+        /* =======================
+         * BOOKINGS
+         * ======================= */
         for ($i = 0; $i < 100; $i++) {
-            $booking = new Booking();
             $screening = $faker->randomElement($screenings);
             $places = $faker->numberBetween(1, 5);
-            $pricePerPerson = $faker->randomFloat(2, 5, 20);
 
+            $booking = new Booking();
             $booking->setUser($faker->randomElement($users))
                     ->setScreening($screening)
                     ->setPlaces($places)
-                    ->setPricePerPerson($pricePerPerson)
+                    ->setPricePerPerson($screening->getPrice()) // 🔥 cohérent
                     ->setDate($faker->dateTimeBetween('-1 month', 'now'));
 
             $manager->persist($booking);

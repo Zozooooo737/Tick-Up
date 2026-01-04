@@ -72,34 +72,40 @@ final class MyController extends AbstractController
     }
     
     #[Route('/booking/recap', name: 'app_booking_recap', methods: ['POST'])]
-    public function recap(Request $request, EntityManagerInterface $em): Response
+    public function recap(
+        Request $request,
+        ScreeningRepository $screeningRepository,
+        EntityManagerInterface $em
+    ): Response
     {
+        // Récupérer les données du formulaire
         $screeningId = $request->request->get('screening');
         $places = (int) $request->request->get('places');
 
+        // Récupérer la séance
         $screening = $em->getRepository(Screening::class)->find($screeningId);
 
-        if (!$screening || $places < 1 || $places > $screening->getRemainingPlaces()) {
+        // Vérifier si la réservation est valide
+        if (!$screeningRepository->isReservationValid($screening, $places)) {
             $this->addFlash('error', 'Séance invalide ou nombre de places incorrect.');
             return $this->redirectToRoute('app_booking', ['movie' => $screening?->getMovie()?->getId()]);
         }
+
         // Récupère l'utilisateur connecté
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
         $userEmail = $user ? $user->getEmail() : 'Invité';
 
-        // Calcul prix total
-        $pricePerPerson = 10; 
-        $totalPrice = $places * $pricePerPerson;
-        
+        // Rendu du récapitulatif
         return $this->render('recap.html.twig', [
             'screening' => $screening,
             'places' => $places,
-            'pricePerPerson' => $pricePerPerson,
-            'totalPrice' => $totalPrice,
+            'pricePerPerson' => $screening->getPrice(),
+            'totalPrice' => $screening->getTotalPrice($places),
             'userEmail' => $userEmail,
         ]);
     }
+
 
     #[Route('/booking/confirm', name: 'app_booking_confirm', methods: ['POST'])]
     public function confirm(Request $request, EntityManagerInterface $em): Response

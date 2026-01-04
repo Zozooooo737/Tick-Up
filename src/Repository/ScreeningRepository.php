@@ -25,4 +25,9 @@ class ScreeningRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function isReservationValid(Screening $screening, int $places): bool
+    {
+        return $screening !== null && $places > 0 && $places <= $screening->getRemainingPlaces();
+    }
 }
