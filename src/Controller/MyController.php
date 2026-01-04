@@ -37,12 +37,17 @@ final class MyController extends AbstractController
     }
 
     #[Route('/movies/{id}', name: 'app_show')]
-    public function show(Movie $movie): Response
+    public function show(Movie $movie, ScreeningRepository $screeningRepository): Response
     {
+        // Récupérer les séances liées au film
+        $screenings = $screeningRepository->findScreeningsFromMovie($movie);
+
         return $this->render('show.html.twig', [
             'movie' => $movie,
+            'screenings' => $screenings,
         ]);
     }
+
 
     #[Route('/booking', name: 'app_booking')]
     public function index(

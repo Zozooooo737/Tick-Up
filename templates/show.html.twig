@@ -49,14 +49,11 @@
                     data-bs-toggle="modal"
                     data-bs-target="#trailerModal"
                 >
-                    ▶ Bande-annonce
+                    Bande-annonce
                 </button>
             {% endif %}
 
-            <a 
-                href="{{ path('app_booking', { id: movie.id }) }}"
-                class="btn btn-primary"
-            >
+            <a href="{{ path('app_booking', { movie: movie.id }) }}" class="btn btn-primary">
                 Voir ce film
             </a>
 
@@ -65,7 +62,29 @@
     </div>
 </div>
 
-<!-- MODAL TRAILER -->
+{% if screenings is not empty %}
+    <h3 class="mt-5">Séances disponibles</h3>
+    <ul class="list-group">
+        {% for screening in screenings %}
+            {% if screening.getRemainingPlaces() > 0 %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ screening.dateTime|date('d/m/Y H:i') }} — Salle {{ screening.room.name }}
+                    <span class="badge bg-primary rounded-pill">
+                        {{ screening.getRemainingPlaces() }} places restantes
+                    </span>
+                    <a href="{{ path('app_booking', { movie: movie.id, screening: screening.id }) }}" class="btn btn-sm btn-success ms-3">
+                        Réserver
+                    </a>
+                </li>
+            {% endif %}
+        {% else %}
+            <li class="list-group-item text-muted">Aucune séance disponible pour le moment.</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+<!-- TRAILER -->
 {% if movie.trailer %}
 <div class="modal fade" id="trailerModal" tabindex="-1">
     <div class="modal-dialog modal-lg modal-dialog-centered">
