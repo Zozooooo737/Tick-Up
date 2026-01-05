@@ -89,13 +89,11 @@ class AppFixtures extends Fixture
 
             $dateTime = $faker->dateTimeBetween('now', '+1 month');
 
-            // LOGIQUE DE PRIX
             $price = match (true) {
                 $dateTime->format('H') < 18 => $faker->randomFloat(2, 8, 10),
                 default => $faker->randomFloat(2, 11, 14),
             };
 
-            // Week-end = plus cher
             if (in_array($dateTime->format('N'), [6, 7])) {
                 $price += 2;
             }

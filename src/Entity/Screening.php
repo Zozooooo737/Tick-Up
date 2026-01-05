@@ -120,9 +120,6 @@ class Screening
         return $this;
     }
 
-    /**
-     * Nombre de places restantes calculé dynamiquement
-     */
     public function getRemainingPlaces(): int
     {
         $reserved = 0;

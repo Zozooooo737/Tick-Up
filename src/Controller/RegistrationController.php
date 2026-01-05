@@ -36,7 +36,6 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // Authentifie automatiquement l'utilisateur après inscription
             return $userAuthenticator->authenticateUser(
                 $user,
                 $authenticator,

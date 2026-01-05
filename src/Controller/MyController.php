@@ -74,7 +74,7 @@ final class MyController extends AbstractController
             'movie' => $movie,
             'movies' => $movieRepository->findAll(),
             'screenings' => $screenings,
-            'screening' => $screening, // <-- nouveau
+            'screening' => $screening,
         ]);
     }
     
